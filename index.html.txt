@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz de Prueba</title>
+</head>
+<body>
+  <h2>Quiz de prueba</h2>
+
+  <form id="quizForm">
+    <p>1. ¿Cuál es el color favorito de un dragón imaginario?</p>
+    <input type="radio" name="q1" value="A"> A. Azul<br>
+    <input type="radio" name="q1" value="B"> B. Verde<br>
+    <input type="radio" name="q1" value="C"> C. Rojo<br>
+    <input type="radio" name="q1" value="D"> D. Amarillo<br>
+
+    <p>2. ¿Qué sonido haría un unicornio si pudiera hablar?</p>
+    <input type="radio" name="q2" value="A"> A. ¡Hola, humano!<br>
+    <input type="radio" name="q2" value="B"> B. Muuuu<br>
+    <input type="radio" name="q2" value="C"> C. ¡Ríndete ante mi brillo!<br>
+    <input type="radio" name="q2" value="D"> D. Croac<br>
+
+    <p>3. ¿En qué planeta vive el Monstruo Come-Tareas?</p>
+    <input type="radio" name="q3" value="A"> A. Saturno<br>
+    <input type="radio" name="q3" value="B"> B. Plutón<br>
+    <input type="radio" name="q3" value="C"> C. Marte<br>
+    <input type="radio" name="q3" value="D"> D. En el cajón de tu escritorio<br><br>
+
+    <input type="button" value="Verificar respuestas" onclick="verificarRespuestas()">
+  </form>
+
+  <p id="resultado"></p>
+
+  <script>
+    function verificarRespuestas() {
+      const respuestasCorrectas = {
+        q1: "C",
+        q2: "A",
+        q3: "D"
+      };
+
+      let correctas = 0;
+      for (let key in respuestasCorrectas) {
+        const seleccionada = document.querySelector(`input[name="${key}"]:checked`);
+        if (seleccionada && seleccionada.value === respuestasCorrectas[key]) {
+          correctas++;
+        }
+      }
+
+      document.getElementById("resultado").innerText = `Respuestas correctas: ${correctas} de 3`;
+    }
+  </script>
+</body>
+</html>
